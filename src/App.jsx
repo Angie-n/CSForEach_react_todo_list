@@ -15,11 +15,11 @@ export default function App() {
     localStorage.setItem("ITEMS", JSON.stringify(todos))
   }, [todos])
 
-  function addTodo(title) {
+  function addTodo(title, date) {
     setTodos(currentTodos => {
       return [
         ...currentTodos,
-        { id: crypto.randomUUID(), title, completed: false },
+        { id: crypto.randomUUID(), title, date, completed: false },
       ]
     })
   }
@@ -39,7 +39,7 @@ export default function App() {
   function deleteTodo(id) {
     setTodos(currentTodos => {
       return currentTodos.filter(todo => todo.id !== id)
-    })
+    });
   }
 
   return (
